@@ -14,7 +14,7 @@ const DialogPortal = ({
   // className,
   ...props
 }: DialogPrimitive.DialogPortalProps) => (
-  <DialogPrimitive.Portal {...props} />
+  <DialogPrimitive.Portal  {...props} />
 )
 DialogPortal.displayName = DialogPrimitive.Portal.displayName
 
