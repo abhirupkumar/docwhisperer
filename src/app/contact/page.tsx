@@ -27,17 +27,6 @@ const Page = () => {
                         <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Submit</button>
                     </form>
                 </div>
-
-                <div className="mt-8">
-                    <h2 className="text-2xl font-semibold mb-4">Reach Out Directly</h2>
-                    <p>
-                        For immediate assistance or inquiries, you can contact us via email or phone:
-                    </p>
-                    <ul className="list-disc list-inside">
-                        <li><strong>Email:</strong> <a href="mailto:support@docwhisperer.com">support@docwhisperer.com</a></li>
-                        <li><strong>Phone:</strong> +1 (123) 456-7890</li>
-                    </ul>
-                </div>
             </div>
         </div>
     )
