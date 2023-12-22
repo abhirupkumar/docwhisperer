@@ -8,6 +8,7 @@ import Navbar from '@/components/Navbar';
 import { Toaster } from '@/components/ui/toaster';
 import Providers from '@/components/Providers';
 import NextTopLoader from 'nextjs-toploader';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
           <Toaster />
           <Navbar />
           {children}
+          <Footer />
         </body>
       </Providers>
     </html>
