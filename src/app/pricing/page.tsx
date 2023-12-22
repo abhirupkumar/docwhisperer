@@ -1,6 +1,6 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import UpgradeButton from '@/components/UpgradeButton'
-import { buttonVariants } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import {
     Tooltip,
     TooltipContent,
@@ -8,6 +8,7 @@ import {
     TooltipTrigger,
 } from '@/components/ui/tooltip'
 import { PLANS } from '@/config/stripe'
+import { getUserSubscriptionPlan } from '@/lib/stripe'
 import { cn } from '@/lib/utils'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import {
@@ -18,9 +19,10 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 
-const Page = () => {
+const Page = async () => {
     const { getUser } = getKindeServerSession()
     const user = getUser()
+    const subscriptionPlan = await getUserSubscriptionPlan();
 
     const pricingItems = [
         {
@@ -221,7 +223,11 @@ const Page = () => {
                                                     <ArrowRight className='h-5 w-5 ml-1.5' />
                                                 </Link>
                                             ) : user ? (
-                                                <UpgradeButton />
+                                                subscriptionPlan.isSubscribed ? <Link
+                                                    href='/dashboard/billing'
+                                                    className='py-2 px-4 w-full bg-white text-black rounded-sm'>
+                                                    Manage Subscription
+                                                </Link> : <UpgradeButton />
                                             ) : (
                                                 <Link
                                                     href='/sign-in'
