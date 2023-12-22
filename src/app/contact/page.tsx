@@ -7,7 +7,7 @@ const Page = () => {
 
             <div className="prose max-w-none">
                 <p>
-                    We're here to help! Whether you have questions, feedback, or need assistance, we invite you to reach out to us. Our dedicated team is committed to providing you with timely and helpful support.
+                    We are here to help! Whether you have questions, feedback, or need assistance, we invite you to reach out to us. Our dedicated team is committed to providing you with timely and helpful support.
                 </p>
                 <div className="mt-8">
                     <h2 className="text-2xl font-semibold mb-4">Send Us a Message</h2>

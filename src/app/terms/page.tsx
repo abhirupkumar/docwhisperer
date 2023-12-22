@@ -12,7 +12,7 @@ const Page = () => {
 
                 <h2 className="text-2xl font-semibold mt-8 mb-4">Use of Services</h2>
                 <p>
-                    Our services are designed to assist users in extracting and analyzing information from PDF documents. You agree not to misuse our services or engage in any activity that may harm or impair our platform's functionality.
+                    Our services are designed to assist users in extracting and analyzing information from PDF documents. You agree not to misuse our services or engage in any activity that may harm or impair our platform&apos;s functionality.
                 </p>
 
                 <h2 className="text-2xl font-semibold mt-8 mb-4">User Responsibilities</h2>
