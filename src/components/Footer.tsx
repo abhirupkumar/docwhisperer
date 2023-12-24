@@ -15,7 +15,7 @@ const Footer = () => {
             <Link href="/">
               <span className="font-semibold">DocWhisperer</span>
             </Link>
-            <p className="max-w-xs text-sm text-gray-100">Empowering developers with privacy-first Link/B testing to create high-converting UIs.</p>
+            <p className="max-w-xs text-sm text-gray-100">Tired of one-sided conversations with PDFs? DocWhisperer is the wingman you need.</p>
             <div className="flex items-center">
               <Link href="http://linkedin.com/in/abhirup2003" target="_blank" rel="noreferrer" className="rounded-md transition-colors hover:bg-gray-500 active:bg-gray-400 -ml-[5px]">
                 <span className="sr-only">LinkedIn</span>
