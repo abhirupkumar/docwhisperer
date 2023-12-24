@@ -7,10 +7,14 @@ import {
 
 import { PDFLoader } from 'langchain/document_loaders/fs/pdf'
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
+import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
+import { TaskType } from "@google/generative-ai";
+import { ChromaClient, GoogleGenerativeAiEmbeddingFunction } from 'chromadb'
 import { PineconeStore } from 'langchain/vectorstores/pinecone'
 import { getPineconeClient } from '@/lib/pinecone'
 import { getUserSubscriptionPlan } from '@/lib/stripe'
 import { PLANS } from '@/config/stripe'
+import { Chroma } from "langchain/vectorstores/chroma";
 
 const f = createUploadthing()
 
@@ -94,10 +98,16 @@ const onUploadComplete = async ({
         // vectorize and index entire document
         const pinecone = await getPineconeClient()
         const pineconeIndex = pinecone.Index('docwhisperer')
+        // const client = new ChromaClient();
+        // const clientIndex = client.Index('docwhisperer')
 
         const embeddings = new OpenAIEmbeddings({
             openAIApiKey: process.env.OPENAI_API_KEY,
         })
+
+        // const embedder = new GoogleGenerativeAiEmbeddingFunction({ googleApiKey: process.env.GOOGLE_API_KEY! })
+
+        // const embeddings = await embedder.generate(["document1", "document2"])
 
         await PineconeStore.fromDocuments(
             pageLevelDocs,
