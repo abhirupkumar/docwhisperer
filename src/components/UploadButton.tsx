@@ -62,6 +62,7 @@ const UploadDropzone = ({
     return (
         <Dropzone
             multiple={false}
+            noClick={true}
             onDrop={async (acceptedFile) => {
                 setIsUploading(true)
 
