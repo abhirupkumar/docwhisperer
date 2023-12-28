@@ -1,5 +1,5 @@
 export default async function sitemap() {
-    const routes = [`${process.env.KINDE_SITE_URL}`, `${process.env.KINDE_SITE_URL}/contact`, `${process.env.KINDE_SITE_URL}/refund`, `${process.env.KINDE_SITE_URL}/privacy`, `${process.env.KINDE_SITE_URL}/terms`, `${process.env.KINDE_SITE_URL}/pricing`]
+    const routes = [`${process.env.NEXT_PUBLIC_HOST}`, `${process.env.NEXT_PUBLIC_HOST}/contact`, `${process.env.NEXT_PUBLIC_HOST}/refund`, `${process.env.NEXT_PUBLIC_HOST}/privacy`, `${process.env.NEXT_PUBLIC_HOST}/terms`, `${process.env.NEXT_PUBLIC_HOST}/pricing`]
 
 
     return routes;
