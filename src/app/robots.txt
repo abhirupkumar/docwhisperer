@@ -1,0 +1,31 @@
+User-Agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /dashboard/*
+Disallow: /dashboard/billing
+
+# Google adsbot ignores robots.txt unless specifically named!
+User-agent: adsbot-google
+Disallow: /dashboard
+Disallow: /dashboard/*
+Disallow: /dashboard/billing
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+Disallow: /dashboard
+Disallow: /dashboard/*
+Disallow: /dashboard/billing
+Sitemap: https://docwhisperer.me/sitemap.xml
+
+User-agent: AhrefsSiteAudit
+Crawl-delay: 10
+Disallow: /dashboard
+Disallow: /dashboard/*
+Disallow: /dashboard/billing
+Sitemap: https://docwhisperer.me/sitemap.xml
+
+User-agent: MJ12bot
+Crawl-Delay: 10
+
+User-agent: Pinterest
+Crawl-delay: 1
