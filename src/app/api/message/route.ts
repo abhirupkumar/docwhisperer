@@ -8,8 +8,6 @@ import { PineconeStore } from 'langchain/vectorstores/pinecone'
 import { NextRequest } from 'next/server'
 
 import { OpenAIStream, StreamingTextResponse } from 'ai'
-import { GoogleGenerativeAiEmbeddingFunction } from 'chromadb'
-import { genAI } from '@/lib/genAI'
 
 export const POST = async (req: NextRequest) => {
     // endpoint for asking a question to a pdf file
@@ -50,10 +48,6 @@ export const POST = async (req: NextRequest) => {
     const embeddings = new OpenAIEmbeddings({
         openAIApiKey: process.env.OPENAI_API_KEY,
     })
-
-    // const embedder = new GoogleGenerativeAiEmbeddingFunction({ googleApiKey: process.env.GOOGLE_API_KEY! })
-
-    // const embeddings = await embedder.generate(["document1", "document2"])
 
     const pinecone = await getPineconeClient()
     const pineconeIndex = pinecone.Index('docwhisperer')
@@ -117,24 +111,6 @@ export const POST = async (req: NextRequest) => {
             },
         ],
     })
-
-    // const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-    // const chat = model.startChat({
-    //     history: formattedPrevMessages.map((message) => {
-    //         if (message.role === 'user')
-    //             return {
-    //                 role: 'user',
-    //                 parts: message.content,
-    //             }
-    //         return {
-    //             role: 'model',
-    //             parts: message.content,
-    //         }
-    //     }),
-    // });
-
-    //   const response = await chat.sendMessage(message);
 
     const stream = OpenAIStream(response, {
         async onCompletion(completion) {

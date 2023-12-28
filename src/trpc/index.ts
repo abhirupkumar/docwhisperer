@@ -14,6 +14,7 @@ import {
   stripe,
 } from '@/lib/stripe'
 import { PLANS } from '@/config/stripe'
+import { UTApi } from 'uploadthing/server'
 
 export const appRouter = router({
   authCallback: publicProcedure.query(async () => {
@@ -96,7 +97,7 @@ export const appRouter = router({
             {
               price: PLANS.find(
                 (plan) => plan.name === 'Pro'
-              )?.price.priceIds.test,
+              )?.price.priceIds.production,
               quantity: 1,
             },
           ],
@@ -211,6 +212,11 @@ export const appRouter = router({
           id: input.id,
         },
       })
+
+
+      const utapi = new UTApi();
+      const fileId = file.url.substring(file.url.lastIndexOf("/") + 1);
+      await utapi.deleteFiles(fileId);
 
       return file
     }),

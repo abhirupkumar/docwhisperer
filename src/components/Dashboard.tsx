@@ -15,6 +15,7 @@ import { Button } from './ui/button'
 import { useState } from 'react'
 import UploadButton from './UploadButton'
 import { getUserSubscriptionPlan } from '@/lib/stripe'
+import { PLANS } from '@/config/stripe'
 
 interface PageProps {
   subscriptionPlan: Awaited<ReturnType<typeof getUserSubscriptionPlan>>
@@ -42,14 +43,16 @@ const Dashboard = ({ subscriptionPlan }: PageProps) => {
       },
     })
 
+  const currentPlan = subscriptionPlan.isSubscribed ? PLANS[1] : PLANS[0];
   return (
-    <main className='mx-auto max-w-7xl md:p-10'>
+    <main className='mx-auto max-w-7xl md:p-10 p-4'>
       <div className='mt-8 flex flex-col items-start justify-between gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:gap-0'>
         <h1 className='mb-3 font-bold text-5xl text-gray-50'>
           My Files
         </h1>
 
-        <UploadButton isSubscribed={subscriptionPlan.isSubscribed} />
+        {(!files || (files?.length < currentPlan.quota)) && <UploadButton isSubscribed={subscriptionPlan.isSubscribed} />}
+        {(files && files?.length >= currentPlan.quota) && <p className='font-medium'>Limit Touched. No more Uploads Possible!</p>}
       </div>
 
 
@@ -92,7 +95,7 @@ const Dashboard = ({ subscriptionPlan }: PageProps) => {
 
                   <div className='flex items-center gap-2'>
                     <MessageSquare className='h-4 w-4' />
-                    mocked
+                    pdf
                   </div>
 
                   <Button
